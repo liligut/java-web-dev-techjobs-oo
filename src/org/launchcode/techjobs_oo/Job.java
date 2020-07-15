@@ -28,8 +28,8 @@ public class Job {
         setEmployer(employer);
         setLocation(location);
         setPositionType(positionType);
+        setCoreCompetency(new CoreCompetency());
         setCoreCompetency(coreCompetency);
-
     }
 
     public int getId() {
@@ -38,7 +38,11 @@ public class Job {
 
 
     public String getName() {
-        return name;
+        if (name== "" || name == null) {
+            return "Data not available";
+        }else{
+            return name;
+        }
     }
 
     public void setName(String name) {
@@ -93,9 +97,9 @@ public class Job {
     @Override
     public String toString() {
         String output;
-        if ((getName() == null || getName()=="") && (getEmployer() == null || getEmployer().getValue() == "") &&
-            (getLocation() == null || getLocation().getValue() == "") && (getPositionType()==null || getPositionType().getValue() == "") &&
-            (getCoreCompetency()==null || getCoreCompetency().getValue() == "")) {
+        if (getName() == "Data not available" && getInfo(getEmployer()) == "Data not available" &&
+            getInfo(getLocation()) == "Data not available" && getInfo(getPositionType()) == "Data not available" &&
+            getInfo(getCoreCompetency()) == "Data not available") {
             output = "\nOOPS! This job does not seem to exist.\n";
         }else{
             output = "\n"+
@@ -107,5 +111,13 @@ public class Job {
                     "Core Competency: "+getCoreCompetency()+"\n";
         }
         return output;
+    }
+    private String getInfo(JobField field){
+        if (field == null){
+            return "Data not available";
+        }
+        else{
+            return field.toString();
+        }
     }
 }

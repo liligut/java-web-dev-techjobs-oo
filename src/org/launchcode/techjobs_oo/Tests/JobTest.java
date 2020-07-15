@@ -10,6 +10,9 @@ public class JobTest {
     Job secondJob;
     Job newJob;
     Job newJob2;
+    Job newJob3;
+    Job newJob4;
+    Job newJob5;
     @Before
     public void createJobObjects(){
         firstJob = new Job();
@@ -24,6 +27,13 @@ public class JobTest {
                 new Location("Desert"),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
+        newJob3 = new Job("",
+                null,
+                new Location(""),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        newJob4 = new Job();
+        newJob5 = new Job("",null,null,null,null);
     }
     @Test
     public void testSettingJobId() {
@@ -53,6 +63,24 @@ public class JobTest {
                                 "Core Competency: Persistence\n";
         assertTrue(expectedResult.equals(newJob.toString()));
 
+    }
+    @Test
+    public void testToStringReturnDataNotAvailable(){
+        String expectedResult = "\n"+
+                "ID: 5\n"+
+                "Name: Data not available\n"+
+                "Employer: Data not available\n"+
+                "Location: Data not available\n"+
+                "Position Type: Quality control\n"+
+                "Core Competency: Persistence\n";
+        assertEquals(expectedResult, newJob3.toString());
+
+    }
+    @Test
+    public void testToStringReturnJobDoesNotExist(){
+        String expectedResult = "\nOOPS! This job does not seem to exist.\n";
+        assertEquals(expectedResult, newJob4.toString());
+        assertEquals(expectedResult, newJob5.toString());
     }
 
 
