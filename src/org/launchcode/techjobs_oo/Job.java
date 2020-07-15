@@ -90,13 +90,22 @@ public class Job {
         return Objects.hash(getId());
     }
 
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
-
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
-
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
+    @Override
+    public String toString() {
+        String output;
+        if ((getName() == null || getName()=="") && (getEmployer() == null || getEmployer().getValue() == "") &&
+            (getLocation() == null || getLocation().getValue() == "") && (getPositionType()==null || getPositionType().getValue() == "") &&
+            (getCoreCompetency()==null || getCoreCompetency().getValue() == "")) {
+            output = "\nOOPS! This job does not seem to exist.\n";
+        }else{
+            output = "\n"+
+                    "ID: "+getId()+"\n"+
+                    "Name: "+getName()+"\n"+
+                    "Employer: "+getEmployer()+"\n"+
+                    "Location: "+getLocation()+"\n"+
+                    "Position Type: "+getPositionType()+"\n"+
+                    "Core Competency: "+getCoreCompetency()+"\n";
+        }
+        return output;
+    }
 }
