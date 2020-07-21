@@ -28,7 +28,6 @@ public class Job {
         setEmployer(employer);
         setLocation(location);
         setPositionType(positionType);
-        setCoreCompetency(new CoreCompetency());
         setCoreCompetency(coreCompetency);
     }
 
@@ -105,10 +104,10 @@ public class Job {
             output = "\n"+
                     "ID: "+getId()+"\n"+
                     "Name: "+getName()+"\n"+
-                    "Employer: "+getEmployer()+"\n"+
-                    "Location: "+getLocation()+"\n"+
-                    "Position Type: "+getPositionType()+"\n"+
-                    "Core Competency: "+getCoreCompetency()+"\n";
+                    "Employer: "+getInfo(getEmployer())+"\n"+
+                    "Location: "+getInfo(getLocation())+"\n"+
+                    "Position Type: "+getInfo(getPositionType())+"\n"+
+                    "Core Competency: "+getInfo(getCoreCompetency())+"\n";
         }
         return output;
     }

@@ -6,35 +6,27 @@ import org.launchcode.techjobs_oo.*;
 import static org.junit.Assert.*;
 
 public class JobTest {
-    Job firstJob;
-    Job secondJob;
-    Job newJob;
-    Job newJob2;
-    Job newJob3;
-    Job newJob4;
-    Job newJob5;
-    @Before
-    public void createJobObjects(){
-        firstJob = new Job();
-        secondJob = new Job();
-        newJob = new Job("Product tester",
+
+    static Job firstJob = new Job();//id=1
+    static Job secondJob = new Job();//id=2
+    static Job newJob = new Job("Product tester",
                                new Employer("ACME"),
                                new Location("Desert"),
                                new PositionType("Quality control"),
-                               new CoreCompetency("Persistence"));
-        newJob2 = new Job("Product tester",
+                               new CoreCompetency("Persistence"));//id=3
+    static Job newJob2 = new Job("Product tester",
                 new Employer("ACME"),
                 new Location("Desert"),
                 new PositionType("Quality control"),
-                new CoreCompetency("Persistence"));
-        newJob3 = new Job("",
+                new CoreCompetency("Persistence"));//id=4
+    static Job newJob3 = new Job("",
                 null,
                 new Location(""),
                 new PositionType("Quality control"),
-                new CoreCompetency("Persistence"));
-        newJob4 = new Job();
-        newJob5 = new Job("",null,null,null,null);
-    }
+                new CoreCompetency("Persistence"));//id=5
+    static Job newJob4 = new Job();//id=6
+    static Job newJob5 = new Job("",null,null,null,null);//id=7
+
     @Test
     public void testSettingJobId() {
         assertTrue(secondJob.getId()-firstJob.getId()==1);
